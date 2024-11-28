@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { toast, Toaster } from 'react-hot-toast'
 import confetti from 'canvas-confetti'
 import { CheckCircle2, Sun, Moon, Star, RefreshCw, Calendar, Clock, AlertTriangle, Repeat } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const FamilyTaskDashboard = () => {
   const { t } = useLanguage()
@@ -21,8 +22,17 @@ const FamilyTaskDashboard = () => {
   const [activeTab, setActiveTab] = useState('all')
 
   useEffect(() => {
-    fetchChildrenAndTasks()
-  }, [])
+    const token = localStorage.getItem('token');
+    const router = useRouter();
+  
+    if (!token) {
+      // Redirect to login page if there's no token
+      router.push('/login');
+    } else {
+      fetchChildrenAndTasks();
+    }
+  }, []);
+  
 
   const fetchChildrenAndTasks = useCallback(async () => {
     setLoading(true)
