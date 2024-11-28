@@ -73,18 +73,7 @@ const LoginForm = () => {
                   <p className="text-sm text-red-500">{errors.parentUsername.message}</p>
                 )}
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">{t.childUsername}</Label>
-                <Input
-                  id="email"
-                  type="text"
-                  placeholder={t.childUsernamePlaceholder}
-                  {...register("email", { required: t.childUsernameRequired })}
-                />
-                {errors.email && (
-                  <p className="text-sm text-red-500">{errors.email.message}</p>
-                )}
-              </div>
+        
               <div className="space-y-2">
                 <Label htmlFor="password">{t.password}</Label>
                 <div className="relative">

@@ -20,10 +20,10 @@ const FamilyTaskDashboard = () => {
   const [tasks, setTasks] = useState({})
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('all')
+  const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const router = useRouter();
   
     if (!token) {
       // Redirect to login page if there's no token
